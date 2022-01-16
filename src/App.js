@@ -7,18 +7,25 @@ import Categories from './components/Categories';
 import List from './components/List'
 
 function App() {
+  //init of component
   const [list, setList] = useState([])
   const [categories, setCategories] = useState([])
-
+  
+  //get all products
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products')
       .then(res => setList(res.data))
   }, [])
+  //get all categories
   useEffect(() => {
     axios.get('https://fakestoreapi.com/products/categories')
       .then(res => setCategories(res.data))
   }, [])
 
+  //functions
+  function routeToPath(path) {
+    axios.get(`/${path}`)
+  }
   return (
     <div className="App">
       <Header />
