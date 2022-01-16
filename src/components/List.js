@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import '../style/List.css'
 import Item from './Item'
 
-export default function List(props) {
+export default function List() {
     const {category} = useParams()
     const [list, setList] = useState([])
 

@@ -1,17 +1,19 @@
 import './style/App.css'
-import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import Categories from './components/Categories';
-import List from './components/List'
+import SiteBody from './components/SiteBody';
+import { createContext, useState } from 'react';
+
+export const CartContext = createContext()
 
 function App() {
+  const [cartList, setCartList] = useState([])
+  
   return (
     <div className="App">
       <Header />
-      <Routes>
-        <Route path="/" element={<Categories />} />
-        <Route path="/products/:category" element={<List />} />
-      </Routes>
+      <CartContext.Provider value={{cartList, setCartList}}>
+        <SiteBody />
+      </CartContext.Provider>
     </div>
   );
 }
